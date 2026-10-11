@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b132b">
+  <title>BankFlow — France</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <main id="loginView" class="login-shell">
+    <section class="login-card">
+      <div class="brand brand-login">
+        <div class="brand-mark" aria-hidden="true"><span>B</span><i></i></div>
+        <div><strong>BANK<span>FLOW</span></strong><small>FRANCE</small></div>
+      </div>
+      <p class="eyebrow">ESPACE CLIENT</p>
+      <h1>Bienvenue chez vous.</h1>
+      <p class="muted">Connectez-vous.</p>
+      <form id="loginForm">
+        <label for="email">Adresse e-mail</label>
+        <input id="email" name="email" type="email" autocomplete="username"
+          placeholder="nom@exemple.fr" required>
+        <label for="password">Mot de passe</label>
+        <input id="password" name="password" type="password" autocomplete="current-password"
+          placeholder="Saisissez un mot de passe" required>
+        
+        <p id="loginError" class="error" role="alert"></p>
+        <button class="primary-btn full" type="submit">Accéder à mon espace <span>→</span></button>
+      </form>
+      <p class="login-foot"><span class="secure-dot"></span> Données conservées dans ce navigateur</p>
+    </section>
+    <aside class="login-aside">
+      <div class="aside-orb orb-one"></div><div class="aside-orb orb-two"></div>
+      <p class="eyebrow light">UNE BANQUE, UNE EXPÉRIENCE</p>
+      <h2>Votre banque,<br>partout avec vous.</h2>
+      <p>Un tableau de bord pensé pour illustrer une expérience bancaire claire, fluide et moderne.</p>
+      <div class="aside-stats"><div><strong>24/7</strong><span>Accès </span></div><div><strong>100%</strong><span>Fiable</span></div></div>
+    </aside>
+  </main>
+
+  <main id="appView" class="app-shell hidden">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark small-mark" aria-hidden="true"><span>B</span><i></i></div>
+        <div><strong>BANK<span>FLOW</span></strong><small>FRANCE</small></div>
+      </div>
+      <div class="topbar-right"><span class="demo-chip">VOTRE ESPACE</span><span id="userEmail" class="user-email"></span><button id="logoutBtn" class="ghost-btn">Déconnexion ↗</button></div>
+    </header>
+
+    <div class="dashboard">
+      <section class="welcome-row">
+        <div><p class="eyebrow">VOTRE ESPACE PERSONNEL</p><h1>Bonjour, bienvenue 👋</h1><p class="muted">Voici un aperçu de votre compte.</p></div>
+        <div class="today-pill"><span class="secure-dot"></span> Espace actif</div>
+      </section>
+
+      <section class="balance-grid">
+        <article class="balance-card">
+          <div class="balance-top"><span>Solde disponible <span class="info-dot">i</span></span><span class="card-symbol">◈</span></div>
+          <p id="balance" class="balance-amount">387 721,62 <small>€</small></p>
+          <div class="balance-bottom"><span><i class="green-dot"></i> Compte actif</span><span>EUR · €</span></div>
+          <div class="card-decoration"></div>
+        </article>
+        <article class="mini-card"><div class="mini-icon blue">↗</div><span class="mini-label">Virements effectués</span><strong id="transferCount">0</strong></article>
+        <article class="mini-card"><div class="mini-icon green">✓</div><span class="mini-label">Statut du compte</span><strong>Actif</strong></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel transfer-panel">
+          <div class="panel-heading"><div><p class="eyebrow">OPÉRATION</p><h2>Nouveau virement</h2></div><span class="panel-icon">↗</span></div>
+          <p class="muted panel-intro">Les informations restent dans ce navigateur.</p>
+          <form id="transferForm">
+            <label for="beneficiary">Nom du bénéficiaire</label>
+            <input id="beneficiary" name="beneficiary" maxlength="80" placeholder="Ex. Marie Dupont" required>
+            <label for="iban">RIB / IBAN du bénéficiaire</label>
+            <input id="iban" name="iban" autocomplete="off" maxlength="34" placeholder="FR76 XXXX XXXX XXXX XXXX XXXX XXX" required>
+            <div class="field-row">
+              <div class="amount-wrap"><label for="amount">Montant du virement (€)</label><div class="amount-input"><span>€</span><input id="amount" name="amount" type="number" min="0.01" max="387721.62" step="0.01" placeholder="0,00" required></div></div>
+              <div class="available-box"><span>Solde disponible</span><strong id="availableSmall">387 721,62 €</strong></div>
+            </div>
+            <p id="transferError" class="error" role="alert"></p>
+            <button class="primary-btn full" type="submit">Faire le virement <span>→</span></button>
+            <p class="form-note"><span>ⓘ</span> Confirmation</p>
+          </form>
+        </article>
+
+        <article class="panel history-panel">
+          <div class="panel-heading history-heading"><div><p class="eyebrow">VOTRE ACTIVITÉ</p><h2>Historique des virements</h2></div><span id="historyCount" class="count-badge">0 opération</span></div>
+          <div id="emptyState" class="empty-state"><div class="empty-icon">↗</div><strong>Aucun virement pour le moment</strong><p>Vos virements de démonstration apparaîtront ici après validation.</p></div>
+          <div id="historyTableWrap" class="table-wrap hidden">
+            <table><thead><tr><th>Bénéficiaire</th><th>Date & heure</th><th>Montant</th><th>Solde après</th></tr></thead><tbody id="historyRows"></tbody></table>
+          </div>
+          <button id="clearHistoryBtn" class="text-btn hidden" type="button">Effacer l’historique</button>
+        </article>
+      </section>
+      <footer class="app-footer">BankFlow France · 2026</footer>
+    </div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
