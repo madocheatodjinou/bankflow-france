@@ -106,3 +106,16 @@
 
 <aside class="prototype-notice" role="note">Prévisualisation BankFlow France : aucune banque ni opération réelle n’est connectée à cette interface.</aside>
 <style>.prototype-notice{position:fixed;z-index:10000;left:50%;bottom:12px;transform:translateX(-50%);width:min(92vw,760px);padding:10px 14px;border:1px solid #f4c66a;border-radius:12px;background:#fff8e8;color:#5a4214;box-shadow:0 4px 18px #17255422;text-align:center;font:600 13px/1.4 system-ui,sans-serif}</style>
+
+<script>
+[ ["tr", "trmsg"], ["sc", "scmsg"], ["ben", "benmsg"] ].forEach(([formId, messageId]) => {
+  const form = document.getElementById(formId);
+  if (!form) return;
+  form.onsubmit = (event) => {
+    event.preventDefault();
+    form.reset();
+    const message = document.getElementById(messageId);
+    if (message) message.textContent = "Service bancaire non connecté : aucune demande ni donnée n’a été transmise.";
+  };
+});
+</script>
