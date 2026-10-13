@@ -11,11 +11,6 @@
   } catch { /* conserve l’aperçu vide si l’historique local est illisible */ }
   const euro = (value) => new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2 }).format(value);
   const dateTime = (value) => new Intl.DateTimeFormat("fr-FR", { dateStyle: "short", timeStyle: "medium" }).format(new Date(value));
-
-  $("#loginView")?.classList.add("hidden");
-  $("#appView")?.classList.remove("hidden");
-  $("#userEmail").textContent = "Aperçu de l’interface";
-  $("#logoutBtn")?.setAttribute("hidden", "");
   $("#balance").innerHTML = euro(balance).replace(" €", "") + " <small>€</small>";
   $("#availableSmall").textContent = euro(balance);
   $("#transferCount").textContent = String(history.length);
